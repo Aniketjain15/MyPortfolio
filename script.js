@@ -119,6 +119,21 @@ const iconTheme = "fa-sun";
 const selectedTheme = localStorage.getItem("selected-theme");
 const selectedIcon = localStorage.getItem("selected-icon");
 
+
+//deafault 
+if (!selectedTheme) {
+  document.body.classList.add(darkTheme);
+  themeButton.classList.add(iconTheme);
+} else {
+  // If user has a preference saved, respect it
+  if (selectedTheme === "dark") {
+    document.body.classList.add(darkTheme);
+    themeButton.classList.add(iconTheme);
+  } else {
+    document.body.classList.remove(darkTheme);
+    themeButton.classList.remove(iconTheme);
+  }
+}
 // We obtain the current theme that the interface has by validating the dark-theme class
 const getCurrentTheme = () =>
   document.body.classList.contains(darkTheme) ? "dark" : "light";
